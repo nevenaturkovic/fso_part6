@@ -8,12 +8,8 @@ const filterSlice = createSlice({
     searchFilter(state, action) {
       return action.payload
     },
-    clearFilter(state, action) {
-      return ""
-    },
   },
 })
 
-
-export const { searchFilter, clearFilter } = filterSlice.actions
+export const { searchFilter } = filterSlice.actions
 export default filterSlice.reducer

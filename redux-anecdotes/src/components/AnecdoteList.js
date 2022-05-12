@@ -21,15 +21,7 @@ const AnecdoteList = () => {
     const anecdoteText = sortedAnecdotes.find(
       (anecdote) => anecdote.id === id
     ).content
-    dispatch(
-      createNotification({
-        message: `you voted '${anecdoteText}'`,
-        kind: "info",
-      })
-    )
-    setTimeout(() => {
-      dispatch(clearNotification())
-    }, 5000)
+    dispatch(createNotification(`you voted '${anecdoteText}'`, 5000))
   }
 
   return (

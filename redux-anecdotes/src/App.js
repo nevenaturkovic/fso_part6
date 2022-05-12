@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Filter from "./components/Filter"
-import Notification from "./components/Notification"
+import ConnectedNotification from "./components/Notification"
 import AnecdoteList from "./components/AnecdoteList"
 import AnecdoteForm from "./components/AnecdoteForm"
 import anecdoteService from "./services/anecdotes"
@@ -17,7 +17,7 @@ const App = () => {
     <div>
       <h2>Anecdotes</h2>
       <Filter />
-      <Notification />
+      <ConnectedNotification />
       <AnecdoteList />
       <AnecdoteForm />
     </div>

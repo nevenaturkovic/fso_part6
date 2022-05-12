@@ -84,7 +84,7 @@ const anecdoteSlice = createSlice({
 //   }
 // }
 
-export const { createAnec, increaseVotes, appendAnecdote, setAnecdotes } =
+export const { increaseVotes, appendAnecdote, setAnecdotes } =
   anecdoteSlice.actions
 
 export const initializeAnecdotes = () => {

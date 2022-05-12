@@ -6,17 +6,21 @@ import {
 } from "../reducers/notificationReducer"
 
 const AnecdoteList = () => {
-  const anecdotes = useSelector((state) =>
-    [...(state.anecdotes)].sort((first, second) =>
-    first.votes > second.votes ? -1 : 1
-    )
+  const sortedAnecdotes = useSelector((state) =>
+    [...state.anecdotes]
+      .sort((first, second) => (first.votes > second.votes ? -1 : 1))
+      .filter((anecdote) =>
+        anecdote.content.toLowerCase().includes(state.filter.toLowerCase())
+      )
   )
 
   const dispatch = useDispatch()
 
   const vote = (id) => {
     dispatch(increaseVotes(id))
-    const anecdoteText = anecdotes.find((anecdote) => anecdote.id === id).content
+    const anecdoteText = sortedAnecdotes.find(
+      (anecdote) => anecdote.id === id
+    ).content
     dispatch(
       createNotification({
         message: `you voted '${anecdoteText}'`,
@@ -30,7 +34,7 @@ const AnecdoteList = () => {
 
   return (
     <div>
-      {anecdotes.map((anecdote) => (
+      {sortedAnecdotes.map((anecdote) => (
         <div key={anecdote.id}>
           <div>{anecdote.content}</div>
           <div>
